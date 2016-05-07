@@ -1,0 +1,126 @@
+--Problem Statement--
+
+A program is needed to play audio notes of the guitar in standard tuning back to a user based on the selection they make. The program should use a switch and the audio should loop until the audio file is paused, or the page is refreshed. 
+
+Nouns: audio, user
+
+Verbs: play, selection, loop until paused
+
+--Defining Diagram--
+
+Inputs:
+  note
+  pause
+
+Processing
+  get input
+  play output
+
+Outputs:
+  audio
+
+--Solution Algorithm--
+
+GuitarTunerAudioLoop
+  Initialize audio, Eplay, Aplay, Dplay, Bplay, Gplay, HighEplay, Pause
+
+  Define function initAudioPlayer
+    Assign button "E" to "Eplay"
+      onclick playPause
+    Assign button "A" to "Aplay"
+      onclick playPause
+    Assign button "D" to "Dplay"
+      onclick playPause
+    Assign button "B" to "Bplay"
+      onclick playPause
+    Assign button "G" to "Gplay"
+      onclick playPause
+    Assign button "highE" to "playHighE"
+      onclick playPause
+    Assign button "pause" to "pause"
+      onclick audio.pause
+    End initAudioPlayer
+
+  Define function playPause
+    Assign audio new audio
+    Switch note
+      CASE OF 
+        "E": play E
+        "A": play A
+        "D": play D
+        "B": play B
+        "G": play G
+        "highE": play high E
+        "pause": pause 
+        default: pause
+      ENDCASE
+
+      IF audio.paused THEN
+        audio.play
+      ELSE 
+        audio.pause
+      ENDIF
+  END playPause
+
+  return initAudioPlayer
+END
+
+--Test Statements--
+
+VARIABLES: note, pause
+
+TEST CASE 1:
+
+  INPUT VALUES:
+    Play Low E
+  EXPECTED RESULT:
+    Play e.wav
+  ACTUAL RESULT:
+    Play e.wav
+
+TEST CASE 2:
+
+  INPUT VALUES:
+    Play A, pause (after 5 seconds)
+  EXPECTED RESULT:
+    Play a.wav, pause it
+  ACTUAL RESULT:
+    Play a.wav, pause it
+
+
+TEST CASE 3:
+
+  INPUT VALUES:
+    null
+  EXPECTED RESULT:
+    audio is paused
+  ACTUAL RESULT:
+    audio is paused
+
+TEST CASE 4:
+
+  INPUT VALUES:
+    Play G, Play B
+  EXPECTED RESULT:
+    Play g.wav, play b.wav
+  ACTUAL RESULT:
+    Play b.wav, play b.wav
+
+TEST CASE 5:
+
+  INPUT VALUES:
+    Play C, Play High E, pause
+  EXPECTED RESULT:
+    Play c.wav, play highE.wav, pause all audio
+  ACTUAL RESULT:
+    Play c.wav, play highE.wav, pause highE.wav
+
+TEST CASE 6:
+
+  INPUT VALUES:
+    Play C, Play C, Play C
+  EXPECTED RESULT:
+    Play c.wav, play c.wav, play c.wav
+  ACTUAL RESULT:
+    Play c.wav and play c.wav and play c.wav, Play c.wav and play c.wav and play c.wav, Play c.wav and play c.wav and play c.wav
+      
