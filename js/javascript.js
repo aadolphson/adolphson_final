@@ -11,11 +11,11 @@ function initAudioPlayer() { //https://stackoverflow.com/questions/32827910/tryi
   Dplay = document.getElementById("D");
   Dplay.addEventListener("click",function(){ playPause("playD");});
 
-  Bplay = document.getElementById("B");
-  Bplay.addEventListener("click",function(){ playPause("playB");});
-
   Gplay = document.getElementById("G");
   Gplay.addEventListener("click",function(){ playPause("playG");});
+
+  Bplay = document.getElementById("B");
+  Bplay.addEventListener("click",function(){ playPause("playB");});
 
   HighEplay = document.getElementById("highE");
   HighEplay.addEventListener("click",function(){ playPause("playHighE");});
@@ -35,12 +35,12 @@ function playPause(note) {//in order of tuning
     case "playD":               
       audio.src = "audio/d.wav";
       break;
-    case "playB":
-      audio.src = "audio/b.wav";
-      break;  
     case "playG":               
       audio.src = "audio/g.wav";
       break;
+    case "playB":
+      audio.src = "audio/b.wav";
+      break;  
     case "playHighE":
       audio.src = "audio/highE.wav";
       break;
